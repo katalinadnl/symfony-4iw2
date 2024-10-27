@@ -14,8 +14,11 @@ class Comment
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $content = null;
+    #[ORM\Column]
+    private ?int $user_id = null;
+
+    #[ORM\Column]
+    private ?int $media_id = null;
 
     #[ORM\Column(enumType: CommentStatusEnum::class)]
     private ?CommentStatusEnum $status = null;
@@ -25,14 +28,26 @@ class Comment
         return $this->id;
     }
 
-    public function getContent(): ?string
+    public function getUserId(): ?int
     {
-        return $this->content;
+        return $this->user_id;
     }
 
-    public function setContent(string $content): static
+    public function setUserId(int $user_id): static
     {
-        $this->content = $content;
+        $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    public function getMediaId(): ?int
+    {
+        return $this->media_id;
+    }
+
+    public function setMediaId(int $media_id): static
+    {
+        $this->media_id = $media_id;
 
         return $this;
     }

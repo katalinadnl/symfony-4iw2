@@ -20,7 +20,7 @@ class Playlist
     private ?int $created_at = null;
 
     #[ORM\Column]
-    private ?int $updated_at = null;
+    private ?int $update_at = null;
 
     public function getId(): ?int
     {
@@ -51,14 +51,14 @@ class Playlist
         return $this;
     }
 
-    public function getUpdatedAt(): ?int
+    public function getUpdateAt(): ?int
     {
-        return $this->updated_at;
+        return $this->update_at;
     }
 
-    public function setUpdatedAt(int $updated_at): static
+    public function setUpdateAt(int $update_at): static
     {
-        $this->updated_at = $updated_at;
+        $this->update_at = $update_at;
 
         return $this;
     }

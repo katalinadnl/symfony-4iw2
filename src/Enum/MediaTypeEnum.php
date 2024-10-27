@@ -1,7 +1,7 @@
 <?php
 namespace App\Enum;
 
-enum CommentStatusEnum: string {
+enum MediaTypeEnum: string {
     case VALID = 'valid';
     case PENDING = 'pending';
     case REJECTED = 'rejected';
