@@ -9,6 +9,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MediaRepository::class)]
+#[ORM\InheritanceType("SINGLE_TABLE")]
+#[ORM\DiscriminatorColumn(name: "type", type: "string")]
+#[ORM\DiscriminatorMap(["media" => Media::class, "movie" => Movie::class,  "serie" => Serie::class])]
 class Media
 {
     #[ORM\Id]
@@ -43,12 +46,6 @@ class Media
     #[ORM\ManyToOne(inversedBy: 'media')]
     #[ORM\JoinColumn(nullable: false)]
     private ?PlaylistMedia $playlistMedia = null;
-
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Movie $movie = null;
-
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Serie $serie = null;
 
     /**
      * @var Collection<int, Category>
