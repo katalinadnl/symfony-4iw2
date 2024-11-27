@@ -6,33 +6,27 @@ namespace App\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[AsController]
 class AdminController extends AbstractController
 {
-    // admin.html.twig, admin_add_films.html.twig, admin_films.html.twig, admin_users.html.twig
-
-    #[Route(path: '/admin', name: 'page_admin')]
-    public function admin(): Response
+    #[Route('/admin', name: 'admin')]
+    public function index(): Response
     {
-        return $this->render(view: 'admin/admin.html.twig');
+        return $this->render('admin/admin.html.twig');
     }
 
-    #[Route(path: '/admin/movies', name: 'page_admin_movies')]
-    public function films(): Response
+    #[Route('/admin/add-movies', name: 'admin_add_movies')]
+    public function addmovies(): Response
     {
-        return $this->render(view: 'admin/admin_films.html.twig');
+        return $this->render('admin/admin_add_films.html.twig');
     }
 
-    #[Route(path: '/admin/movies/add', name: 'page_admin_movies_add')]
-    public function addMovies(): Response
-    {
-        return $this->render(view: 'admin/admin_add_films.html.twig');
-    }
-
-    #[Route(path: '/admin/users', name: 'page_admin_users')]
+    #[Route('/admin/users', name: 'admin_users')]
     public function users(): Response
     {
-        return $this->render(view: 'admin/admin_users.html.twig');
+        return $this->render('admin/admin_users.html.twig');
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\MediaRepository;
-use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -33,7 +32,7 @@ class Media
     private ?string $longDescription = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?DateTimeInterface $releaseDate = null;
+    private ?\DateTimeInterface $releaseDate = null;
 
     #[ORM\Column(length: 255)]
     private ?string $coverImage = null;
@@ -124,12 +123,12 @@ class Media
         return $this;
     }
 
-    public function getReleaseDate(): ?DateTimeInterface
+    public function getReleaseDate(): ?\DateTimeInterface
     {
         return $this->releaseDate;
     }
 
-    public function setReleaseDate(DateTimeInterface $releaseDate): static
+    public function setReleaseDate(\DateTimeInterface $releaseDate): static
     {
         $this->releaseDate = $releaseDate;
 
@@ -279,8 +278,6 @@ class Media
 
         return $this;
     }
-
-
 
     /**
      * @return Collection<int, PlaylistMedia>

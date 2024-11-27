@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Other;
+namespace App\Controller\Movie;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class SubscriptionController extends AbstractController
+class ListMovieController extends AbstractController
 {
-    #[Route('/subscriptions', name: 'page_subscription')]
+    #[Route('/movie', name: 'movie_lists')]
     public function index(): Response
     {
-        return $this->render('other/abonnements.html.twig');
+        return $this->render('movie/lists.html.twig');
     }
 }
