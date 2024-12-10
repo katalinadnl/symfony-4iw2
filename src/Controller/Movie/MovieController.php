@@ -4,19 +4,23 @@ declare(strict_types=1);
 
 namespace App\Controller\Movie;
 
+use App\Entity\Movie;
+use App\Entity\Media;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class MovieController extends AbstractController
 {
-    #[Route('/movie/detail', name: 'movie_detail')]
-    public function detail(): Response
+    #[Route('/media/{id}', name: 'movie_detail')]
+    public function detail(Media $media): Response
     {
-        return $this->render('movie/detail.html.twig');
+        return $this->render('movie/detail.html.twig', [
+            'media' => $media,
+        ]);
     }
 
-    #[Route('/movie/detail-serie', name: 'movie_detail_serie')]
+    #[Route('/media/detail-serie', name: 'movie_detail_serie')]
     public function detail_serie(): Response
     {
         return $this->render('movie/detail_serie.html.twig');
