@@ -38,8 +38,6 @@ App\Entity\Serie:
     media_serie_{1..50} (extends media):
         title: 'Serie <current()>'
 
-
-
 App\Entity\Season:
   season_1_{@media_serie*}:
     number: '<numberBetween(1, 10)>'
